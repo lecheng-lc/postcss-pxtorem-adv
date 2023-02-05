@@ -1,4 +1,4 @@
-更改东西已用蓝色标记起来
+更改东西已用斜体标记起来
 # postcss-pxtorem-adv
 **<i><font color="blue">This is a fork based on [postcss-pxtorem](https://github.com/cuth/postcss-pxtorem). The difference is postcss-pxtorem-adv supports multiple rules.</font></i>**
 
