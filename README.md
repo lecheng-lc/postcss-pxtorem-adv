@@ -1,11 +1,17 @@
-# postcss-pxtorem [![NPM version](https://badge.fury.io/js/postcss-pxtorem.svg)](http://badge.fury.io/js/postcss-pxtorem)
+更改东西已用蓝色标记起来
+# postcss-pxtorem-adv
+**<font color="blue">This is a fork based on [postcss-pxtorem](https://github.com/cuth/postcss-pxtorem). The difference is postcss-pxtorem-adv supports multiple rules.  </font>**
+
 
 A plugin for [PostCSS](https://github.com/ai/postcss) that generates rem units from pixel units.
+
+# BugFix
+**<font color="blue">Fixed 'include' and 'exclude' not taking effect under windows</font>**
 
 ## Install
 
 ```shell
-$ npm install postcss postcss-pxtorem --save-dev
+$ npm install postcss postcss-pxtorem-adv --save-dev
 ```
 
 ## Usage
@@ -68,11 +74,20 @@ Default:
     replace: true,
     mediaQuery: false,
     minPixelValue: 0,
-    exclude: /node_modules/i
+    exclude: /node_modules/i,
+    rules: [
+      {
+        exclude: 'xxx',
+        inherit: true
+      }
+    ]
 }
 ```
 
 - `rootValue` (Number | Function) Represents the root element font size or returns the root element font size based on the [`input`](https://api.postcss.org/Input.html) parameter
+- **<font color="blue">`inherit` Inherited master configuration</font>**
+- **<font color="blue">`unit` To achieve partial file rem, this time only convert 'px' value</font>,Support 'rpx' unit, the usage is the same as wechat mini program, rpx forced to press 'rootValue: 32' to convert to rem (need to dynamically adjust rem reference value according to the screen width)）**
+- 
 - `unitPrecision` (Number) The decimal numbers to allow the REM units to grow to.
 - `propList` (Array) The properties that can change from px to rem.
     - Values need to be exact matches.
@@ -96,7 +111,8 @@ Default:
     - If value is function, you can use exclude function to return a true and the file will be ignored.
         - the callback will pass the file path as  a parameter, it should returns a Boolean result.
         - `function (file) { return file.indexOf('exclude') !== -1; }`
-
+- **<font color="blue">rules: (Object) Supporting all the above parameters</font>**
+        
 ### Use with gulp-postcss and autoprefixer
 
 ```js

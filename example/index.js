@@ -1,18 +1,17 @@
-"use strict";
+'use strict'
 
-const fs = require("fs");
-const postcss = require("postcss");
-const pxtorem = require("..");
-
-const css = fs.readFileSync("main.css", "utf8");
-const options = {
+var fs = require('fs')
+var postcss = require('postcss')
+var pxtorem = require('..')
+var css = fs.readFileSync('main.css', 'utf8')
+var options = {
   replace: false
-};
-const processedCss = postcss(pxtorem(options)).process(css).css;
+}
+var processedCss = postcss(pxtorem(options)).process(css).css
 
-fs.writeFile("main-rem.css", processedCss, function(err) {
+fs.writeFile('main-rem.css', processedCss, function (err) {
   if (err) {
-    throw err;
+    throw err
   }
-  console.log("Rem file written.");
-});
+  console.log('Rem file written.')
+})
